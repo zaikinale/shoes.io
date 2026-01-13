@@ -61,7 +61,6 @@ function Login() {
     <button onClick={() => navigate('/register')}>registration</button>
     <a onClick={() => guestGo()}>guest version</a>
     </section>
-    
   );
 }
 
