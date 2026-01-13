@@ -26,6 +26,11 @@ function Login() {
     }
   };
 
+  const guestGo = () => {
+    navigate('/store'); 
+    setUser(null);
+  }
+
   return (
     <section className='login'>
     <form className="form" onSubmit={submitForm}>
@@ -53,6 +58,8 @@ function Login() {
     <div className={error !== "" && "error"}> 
       { error !== "" && error}
     </div>
+    <button onClick={() => navigate('/register')}>registration</button>
+    <a onClick={() => guestGo()}>guest version</a>
     </section>
     
   );
