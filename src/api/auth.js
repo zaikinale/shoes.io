@@ -78,8 +78,25 @@ export async function login(login, password) {
     }
     if (user.password !== password) {
         Promise.reject("user wrong password or not found")
-    }
+    } 
     // Promise.reject("user  ")
+}
+
+export async function register(email, password, confpassword) {
+    const user = users.find(user => user.login == email);
+    if (user){
+        return Promise.reject("There is already a user with the same email address.")
+    }
+    if (password !== confpassword) {
+        return Promise.reject("The passwords don't match")
+    }
+
+    const userNew = {id: Date.now(), login: email, password: password, roleID: 1}
+
+    users.push(userNew)
+
+    const {passwordNew, ...dtoUser} = userNew;
+    return Promise.resolve(dtoUser)
 }
 
 export async function addBasket(idUser, idGood) {
